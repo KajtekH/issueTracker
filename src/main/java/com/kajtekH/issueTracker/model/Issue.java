@@ -29,6 +29,9 @@ public class Issue {
 	@Column(name = "description")
 	private String description;
 	
+	public Issue() {
+		
+	}
 	
 	public Issue(String issueName, int projectId, LocalDateTime deadline, String description) {
 		super();

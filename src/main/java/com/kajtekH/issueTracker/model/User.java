@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 	
-	@Id 
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)		
 	private int id;
 	
@@ -22,6 +22,16 @@ public class User {
 	@Column(name = "username")
 	private String username;
 	
+	public User() {
+		
+	}
+	
+	public User(String email, String username) {
+		super();
+		this.email = email;
+		this.username = username;
+	}
+		
 	public int getId() {
 		return id;
 	}

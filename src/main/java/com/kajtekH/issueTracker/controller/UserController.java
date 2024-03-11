@@ -1,21 +1,24 @@
 package com.kajtekH.issueTracker.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.kajtekH.issueTracker.service.UserService;
+import com.kajtekH.issueTracker.model.User;
+import com.kajtekH.issueTracker.repository.UserRepository;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/")
 public class UserController {
 	
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
 	
-	@GetMapping("/")
-	public String viewUserList(Model model) {
-		model.addAttribute("listUsers", userService.getAllUsers());
-		return "index";
+	@GetMapping("/users")
+	public List<User> getAllUsers(){
+		return userRepository.findAll();
 	}
 }
