@@ -9,9 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 export class UserService {
 
   private baseURL = "http://localhost:8080/api/v1/users";
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.baseURL}`);
+    return this.http.get<User[]>(`${this.baseURL}`);
+  }
+
+  createUser(user: User): Observable<Object>{
+    return this.http.post(`${this.baseURL}`, user);
   }
 }

@@ -4,12 +4,19 @@
         <tr>
             <th> Name </th>
             <th> Email </th>
+            <th> Action</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor = "let user of users" >
             <td> {{ user.username }} </td>
             <td> {{ user.email }} </td>
+            <td>
+                
+                <button (click)="updateUser(user.id)" class="btn btn-info" >update</button>
+                 &nbsp;
+                <button (click)="updateUser(user.id)" class="btn btn-info">delete</button>
+            </td>
         </tr>
     </tbody>
 </table>
