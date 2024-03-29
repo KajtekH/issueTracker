@@ -1,2 +1,22 @@
 <div class="col-md-6 offset-md-3">
-<h3> Update user </h3>
+    <h3> Update user </h3>
+    <form (ngSubmit) = "onSubmit()" >
+        <div class="form-group">
+            <label> Username </label>
+            <input type="text" class="form-control" id="username"
+            [(ngModel)] = "user.username" name = "username">
+        </div>
+        <div class="form-group">
+            <label> email </label>
+            <input type="text" class="form-control" id="email"
+            [(ngModel)] = "user.email" name = "email">
+        </div>
+    
+        <br>
+        <button class = "btn btn-success" type = "submit">Submit</button>
+    
+    
+    
+    </form>
+    
+    </div>

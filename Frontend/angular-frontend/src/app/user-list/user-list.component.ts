@@ -36,4 +36,9 @@ updateUser(id: number){
   this.router.navigate(['update-user',id]);
 }
 
+deleteUser(id:number){
+  this.userService.deleteUser(id).subscribe(data=>{
+    this.getUsers();
+  })
+}
 }
