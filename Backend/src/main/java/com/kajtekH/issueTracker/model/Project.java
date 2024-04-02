@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,18 +23,19 @@ public class Project {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "manager_id")
-	private int managerId;
+	@ManyToOne
+	@JoinColumn(name = "manager_id")
+	private User manager;
 
 	public Project() {
 		
 	}
 	
-	public Project(String projectName, String description, int managerId) {
+	public Project(String projectName, String description, User manager) {
 		super();
 		this.projectName = projectName;
 		this.description = description;
-		this.managerId = managerId;
+		this.manager = manager;
 	}
 
 	public int getId() {
@@ -43,7 +46,7 @@ public class Project {
 		this.id = id;
 	}
 
-	public String getProjectName() {
+	public String getProjectName() {	
 		return projectName;
 	}
 
@@ -59,13 +62,14 @@ public class Project {
 		this.description = description;
 	}
 
-	public int getManagerId() {
-		return managerId;
+	public User getManager() {
+		return manager;
 	}
 
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
+	public void setManager(User managerId) {				
+		this.manager = managerId;				
 	}
+	
 	
 	
 }

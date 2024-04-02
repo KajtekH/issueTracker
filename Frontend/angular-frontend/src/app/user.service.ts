@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { User } from './user';
 import { HttpClientModule } from '@angular/common/http';
 @Injectable({
@@ -27,7 +27,10 @@ export class UserService {
     return this.http.put(`${this.baseURL}/${id}`, user);
   }
 
-  deleteUser(id:number){
-    return this.http.delete(`${this.baseURL}/${id}`);
+  deleteUser(id:number): Observable<Object>{
+    return this.http.delete(`${this.baseURL}/${id}`)
+    .pipe(catchError(error =>{
+      return throwError(error);
+    }));
   }
 }

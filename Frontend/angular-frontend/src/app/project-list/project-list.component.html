@@ -1,0 +1,18 @@
+<h2>Project List</h2>
+<table class = "table table-striped">
+    <h1><button class="btn btn-success">Add Project</button> </h1>
+    <thead>        
+        <tr>
+            <th> Name </th>
+            <th> Description </th>
+            <th> Manager Id</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let project of projects" >
+            <td> {{project.projectName }} </td>
+            <td> {{ project.description }} </td>
+            <td> {{ project.manager.id }} </td>
+        </tr>
+    </tbody>
+</table>

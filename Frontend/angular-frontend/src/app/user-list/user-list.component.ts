@@ -4,9 +4,9 @@ import { NgForOf } from '@angular/common';
 import { UserService } from '../user.service';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 import { Router,RouterModule, NavigationEnd, ActivatedRoute, RouterLinkActive, RouterOutlet, RouteConfigLoadEnd, ROUTES} from '@angular/router';
-import { filter, startWith } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { Route } from '@angular/router';
+import { error } from 'console';
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -39,6 +39,7 @@ updateUser(id: number){
 deleteUser(id:number){
   this.userService.deleteUser(id).subscribe(data=>{
     this.getUsers();
-  })
+  }), error=>{throw error}
+  }
 }
-}
+
