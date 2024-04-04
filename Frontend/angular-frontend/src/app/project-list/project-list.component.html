@@ -1,6 +1,6 @@
 <h2>Project List</h2>
+<h3><button class="btn btn-success" routerLink="/create-project">Add project</button></h3>
 <table class = "table table-striped">
-    <h1><button class="btn btn-success">Add Project</button> </h1>
     <thead>        
         <tr>
             <th> Name </th>
@@ -13,6 +13,9 @@
             <td> {{project.projectName }} </td>
             <td> {{ project.description }} </td>
             <td> {{ project.manager.id }} </td>
+            <td>
+                <button (click)="updateProject(project.id)" class=" = btn btn-info"> update </button>
+            </td>
         </tr>
     </tbody>
 </table>

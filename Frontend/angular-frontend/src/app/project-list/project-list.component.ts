@@ -14,8 +14,13 @@ import { Router,RouterModule, NavigationEnd, ActivatedRoute, RouterLinkActive, R
 })
 export class ProjectListComponent implements OnInit {
   projects: Project[];
+  private routeSubscription: Subscription;
 
   constructor(private projectService: ProjectService, private router:Router){}
+
+  ngOnInit(): void {
+    this.getProjects();
+  }
 
   private getProjects(){
     this.projectService.getProjectList().subscribe(data=>{
@@ -23,8 +28,7 @@ export class ProjectListComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getProjects();
+  updateProject(id: Number){
+    this.router.navigate(['update-project',id]);
   }
-
 }

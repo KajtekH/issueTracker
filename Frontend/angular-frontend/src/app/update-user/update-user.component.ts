@@ -24,7 +24,8 @@ export class UpdateUserComponent implements OnInit {
         
         this.userService.getUserById(this.id).subscribe(data=>{
           this.user = data;
-        }, error => console.log(error));
+        }, 
+        error => console.log(error));
       }
 
       updateUser(){
