@@ -1,0 +1,21 @@
+<h3><button class="btn btn-success" routerLink="/create-project">Add issue</button></h3>
+<table class = "table table-striped" *ngIf = "issues">
+    <thead>        
+        <tr>
+            <th> Name </th>
+            <th> Description </th>
+            <th> Deadline</th>
+            <th> Project Id</th> 
+            <th class="action"> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let issue of issues | async">
+            <td>{{issue.issueName}}</td>
+            <td>{{issue.description}}</td>
+            <td>{{issue.deadline}}</td>
+            <td *ngIf="issue.project">{{issue.project.id}}</td>
+        </tr>
+    </tbody>
+</table>
+

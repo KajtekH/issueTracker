@@ -1,0 +1,17 @@
+.table {
+    display: block;
+    max-width: 100%;
+    overflow: auto;/* This will add a scrollbar if the content overflows */
+    table-layout: fixed;
+}
+.actions-column{
+    width: 10%;
+}
+
+.action{
+    width: 10%;
+    min-width: 200px;
+}
+body {
+    min-width: 600px; /* Adjust this value to your desired minimum width */
+   }

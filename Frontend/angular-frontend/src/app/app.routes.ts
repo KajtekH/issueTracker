@@ -5,6 +5,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { IssueListComponent } from './issue-list/issue-list.component';
 
 export const routes: Routes = [
     {path: 'users', component: UserListComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'update-user/:id', component: UpdateUserComponent},
     {path: 'update-project/:id', component: UpdateProjectComponent},
     {path: 'projects', component: ProjectListComponent},
+    {path: 'issues', component: IssueListComponent},
     {path: '', redirectTo: 'projects', pathMatch: 'full'}
 ];

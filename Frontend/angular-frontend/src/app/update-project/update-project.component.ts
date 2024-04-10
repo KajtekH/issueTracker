@@ -33,10 +33,16 @@ export class UpdateProjectComponent implements OnInit {
     }
     
     updateProject(){
-      this.projectService.updateProject(this.id, this.project).subscribe(data=>{
+      this.projectService.updateProject(this.id, this.project).subscribe({
+        next: (data) =>{
         console.log(data);
         this.project = new Project();
         this.gotoProjectList();
+        },
+        error: (error) => {
+          console.error('Error fetching user', error);
+          this.errorMessage = 'User not found. Please enter a valid user ID.';
+        }
       })
     }
     

@@ -1,12 +1,14 @@
 package com.kajtekH.issueTracker.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,11 +22,12 @@ public class Issue {
 	@Column(name = "issue_name")
 	private String issueName;
 
-	@Column(name = "project_id")
-	private int projectId;
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private Project project;
 
 	@Column(name = "deadline")
-	private LocalDateTime deadline;
+	private LocalDate deadline;
 	
 	@Column(name = "description")
 	private String description;
@@ -33,10 +36,10 @@ public class Issue {
 		
 	}
 	
-	public Issue(String issueName, int projectId, LocalDateTime deadline, String description) {
+	public Issue(String issueName, Project project, LocalDate deadline, String description) {
 		super();
 		this.issueName = issueName;
-		this.projectId = projectId;
+		this.project = project;
 		this.deadline = deadline;
 		this.description = description;
 	}
@@ -53,16 +56,16 @@ public class Issue {
 	public void setIssueName(String issueName) {
 		this.issueName = issueName;
 	}
-	public int getProjectId() {
-		return projectId;
+	public Project getProjectId() {
+		return project;
 	}
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setProject(Project project) {
+		this.project = project;
 	}
-	public LocalDateTime getDeadline() {
+	public LocalDate getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(LocalDateTime deadline) {
+	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
 	public String getDescription() {

@@ -27,17 +27,21 @@ export class CreateProjectComponent implements OnInit {
    
   }
 
-  onSubmit(){
-    this.userService.getUserById(this.managerId).subscribe(user=>{
-      this.project.manager = user;
-      console.log(this.project);
-      this.saveProject();
-      this.goToProjectList();
-    }, error =>{
-      console.error('Error fetching user',error);
-      this.errorMessage = 'User not found. Please enter a valid user ID.';
-    })
-  }
+  onSubmit() {
+    this.userService.getUserById(this.managerId).subscribe({
+       next: (user) => {
+         this.project.manager = user;
+         console.log(this.project);
+         this.saveProject();
+         this.goToProjectList();
+       },
+       error: (error) => {
+         console.error('Error fetching user', error);
+         this.errorMessage = 'User not found. Please enter a valid user ID.';
+       }
+    });
+   }
+  
   goToProjectList(){
     this.router.navigate(['/projects']);
   }
@@ -45,6 +49,7 @@ export class CreateProjectComponent implements OnInit {
   saveProject(){
     this.projectService.createProject(this.project).subscribe(data=>{
       console.log(data);
+      this.errorMessage = '';
       this.goToProjectList();
     })
   }

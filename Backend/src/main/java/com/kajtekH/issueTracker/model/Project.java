@@ -66,8 +66,8 @@ public class Project {
 		return manager;
 	}
 
-	public void setManager(User managerId) {				
-		this.manager = managerId;				
+	public void setManager(User manager) {				
+		this.manager = manager;				
 	}
 	
 	
