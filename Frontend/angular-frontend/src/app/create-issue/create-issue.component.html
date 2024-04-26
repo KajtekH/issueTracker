@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Create project </h3>
+    <form (ngSubmit) = "onSubmit()" >
+        <div class="form-group">
+            <label> Issue name </label>
+            <input type="text" class="form-control" id="issueName"
+            [(ngModel)] = "issue.issueName" name = "issueName">
+        </div>
+        <div class="form-group">
+            <label> description </label>
+            <input type="text" class="form-control" id="description"
+            [(ngModel)] = "issue.description" name = "description">
+        </div>
+        <div class="form-group">
+            <label> Deadline </label>
+            <input type="text" class="form-control" id="deadline"
+            [(ngModel)] = "issue.deadline" name = "deadline">
+        </div>
+        
+    
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+
+        <br>
+        <button class = "btn btn-success" type = "submit">Submit</button>
+    
+    </form>
+    
+    </div>
+

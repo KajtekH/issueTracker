@@ -15,17 +15,48 @@ import { Router,RouterModule, NavigationEnd, ActivatedRoute, RouterLinkActive, R
 })
 export class IssueListComponent implements OnInit{
 
-  issues: Observable<Issue[]>;
+  issues: Issue[];
   private routeSubsciption: Subscription;
+  projectId: number;
 
-  constructor(private issueServise: IssueService, private router: Router){}
+  constructor(private issueService: IssueService,
+     private router: Router,
+     private route: ActivatedRoute){}
 
-  ngOnInit(): void {
-    this.getIssues();
-  }
+     ngOnInit(): void {
+      this.route.params.subscribe(params => {
+        this.projectId = +params['projectId']; // Convert to number
+        console.log('Project ID:', this.projectId);
+  
+        if (this.projectId) {
+          this.fetchIssuesByProject(this.projectId);
+        } else {
+          console.error('Project ID is undefined.');
+        }
+      });
+    }
+  
+    fetchIssuesByProject(projectId: number): void {
+      this.issueService.getIssueListByProject(projectId).subscribe( data =>{
+        this.issues = data;
+      },
+        error => {
+          console.error('Error fetching issues:', error);
+        }
+      );
+    }
+   
+    deleteIssue(id: Number){
+      this.issueService.deleteIssue(id).subscribe(data=>{
+        this.fetchIssuesByProject(this.projectId);
+      })
+    }
 
-  private getIssues(){
-    this.issues = this.issueServise.getIssueList()
-  }
+    updateIssue(id:Number){
+      this.router.navigate([this.projectId,'update-issue', id]);
+    }
 
+    createIssue(){
+      this.router.navigate([this.projectId,'create-issue']);
+    }
 }

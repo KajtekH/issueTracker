@@ -15,7 +15,7 @@
             <td> {{ project.manager.id }} </td>
             <td class="actions-columns">                           
                  <button (click)="updateProject(project.id)" class=" = btn btn-info"> update </button>
-               
+                 <button (click)="issueList(project.id)" class=" = btn btn-info"> issue list </button>
                  <button (click)="deleteProject(project.id)" class="btn btn-danger" style="margin-left: 10px;">delete</button>
             </td>
         </tr>

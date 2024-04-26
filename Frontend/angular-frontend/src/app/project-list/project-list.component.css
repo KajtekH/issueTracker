@@ -1,7 +1,7 @@
 .table {
     display: block;
     max-width: 100%;
-    overflow: auto;/* This will add a scrollbar if the content overflows */
+    overflow:visible;/* This will add a scrollbar if the content overflows */
     table-layout: fixed;
 }
 .actions-column{

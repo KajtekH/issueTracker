@@ -19,4 +19,24 @@ export class IssueService {
       })
     )
   }
+
+  getIssueListByProject(projectId: Number): Observable<Issue[]>{
+    return this.http.get<Issue[]>(`http://localhost:8080/api/v1/projects/${projectId}/issues`);
+  }
+
+  getIssueById(id: Number):Observable<Issue>{
+    return this.http.get<Issue>(`${this.baseURL}/${id}`);
+  }
+
+  createIssue(issue: Issue):Observable<Object>{
+    return this.http.post(`${this.baseURL}`,issue);
+  }
+
+  updateIssue(id: Number, issue: Issue):Observable<Object>{
+    return this.http.put(`${this.baseURL}/${id}`,issue);
+  }
+  
+  deleteIssue(id:Number):Observable<Object>{
+    return this.http.delete(`${this.baseURL}/${id}`);
+  }
 }

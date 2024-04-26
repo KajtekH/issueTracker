@@ -1,6 +1,6 @@
 import { User } from "./user";
 export class Project {
-    id: number;
+    id: Number;
     description: String;
     projectName: String;
     manager: User;

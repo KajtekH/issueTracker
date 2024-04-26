@@ -37,4 +37,8 @@ export class ProjectListComponent implements OnInit {
       this.getProjects();
     })
   }
+
+  issueList(projectId: Number){
+    this.router.navigate(['projects',projectId,'issues']);
+  }
 }
